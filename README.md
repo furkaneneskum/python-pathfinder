@@ -1,186 +1,186 @@
 # Python Pathfinder
 
-**A gamified, serverless Python learning platform that runs entirely in the browser.**
+**Tamamen tarayıcıda çalışan, oyunlaştırılmış ve sunucusuz bir Python öğrenme platformu.**
 
-Python Pathfinder turns a 32-chapter Python curriculum into an interactive staircase: every chapter is a step with its own lesson notes, a live Python code lab, flashcards and an end-of-chapter "boss fight" test. Progress, XP, streaks and study time are tracked locally — no account, no backend, no install.
+Python Pathfinder, 32 bölümlük bir Python müfredatını interaktif bir merdivene dönüştürür: her bölüm; ders notları, canlı Python kod laboratuvarı, bilgi kartları ve bölüm sonu "boss fight" testi içeren bir basamaktır. İlerleme, XP, günlük seri ve çalışma süresi cihazda saklanır — hesap, sunucu veya kurulum gerekmez.
 
-**Live demo:** [furkaneneskum.github.io/python-pathfinder](https://furkaneneskum.github.io/python-pathfinder/)
+**Canlı demo:** [furkaneneskum.github.io/python-pathfinder](https://furkaneneskum.github.io/python-pathfinder/)
 
-![Python Pathfinder landing screen](assets/screenshots/01-landing.png)
-
----
-
-## Highlights
-
-- **32-chapter learning staircase** — a two-lane, zigzag roadmap from basic data types to advanced topics.
-- **Real Python in the browser** — code runs client-side through [Pyodide](https://pyodide.org/) (CPython compiled to WebAssembly).
-- **Gamification engine** — XP, levels, five developer ranks, daily streaks, daily focus goals and a 30-day activity heatmap.
-- **Per-chapter study timer** — start / pause / save sessions; saved minutes convert into XP.
-- **Developer panel** — a compact profile widget that expands into a centered, full-detail dashboard.
-- **Zero backend in production** — all state lives in `localStorage`; the site is plain static files on GitHub Pages.
-- **Optional FastAPI + SQLite backend** for local development and API experiments.
-- **Responsive cyberpunk UI** — glassmorphism, 3D tilt cards, dark/light themes, keyboard shortcuts and a mobile layout.
+![Python Pathfinder giriş ekranı](assets/screenshots/01-landing.png)
 
 ---
 
-## Tour
+## Öne Çıkanlar
 
-### 1. Landing & boot sequence
+- **32 bölümlük öğrenme merdiveni** — temel veri tiplerinden ileri konulara uzanan, sağlı sollu iki şeritli yol haritası.
+- **Tarayıcıda gerçek Python** — kodlar [Pyodide](https://pyodide.org/) (WebAssembly'ye derlenmiş CPython) ile istemci tarafında çalışır.
+- **Oyunlaştırma motoru** — XP, seviyeler, beş geliştirici unvanı, günlük seri, günlük odak hedefi ve 30 günlük aktivite haritası.
+- **Bölüm bazlı çalışma sayacı** — oturumu başlat / durdur / kaydet; kaydedilen dakikalar XP'ye dönüşür.
+- **Geliştirici paneli** — kenarda kompakt bir profil özeti, tek tıkla ekranın ortasında açılan detaylı panel.
+- **Yayında sıfır sunucu** — tüm veriler `localStorage`'da tutulur; site GitHub Pages üzerinde statik dosyalardan oluşur.
+- **İsteğe bağlı FastAPI + SQLite backend** — yerel geliştirme ve API denemeleri için.
+- **Duyarlı siberpunk arayüz** — glassmorphism, 3D eğim efektli kartlar, koyu/açık tema, klavye kısayolları ve mobil düzen.
 
-The entry screen combines a mission brief (curriculum modules and key numbers) with an animated system terminal that "boots" the platform. The learner enters a name and launches the app; the name is stored locally and used across the interface.
+---
 
-![Landing screen with mission brief and boot terminal](assets/screenshots/01-landing.png)
+## Ekran Turu
 
-### 2. Dashboard
+### 1. Giriş ve açılış sekansı
 
-After entering, the learner lands on the main dashboard:
+Giriş ekranı; müfredat modüllerini ve temel sayıları gösteren bir başlangıç özetini, platformu "başlatan" animasyonlu bir sistem terminaliyle birleştirir. Kullanıcı adını girip sistemi başlatır; isim cihazda saklanır ve arayüzün her yerinde kullanılır.
 
-- **HUD bar** — daily streak, level, current rank, XP progress to the next level and overall completion percentage.
-- **Operator greeting panel** — time-of-day greeting plus a *Resume where you left off* button that jumps to the next chapter.
-- **Activity heatmap** — the last 30 days of study time, colored by intensity.
-- **Developer panel summary** — avatar with progress ring, completed chapters, minutes studied today and total XP.
+![Başlangıç özeti ve sistem terminali](assets/screenshots/01-landing.png)
 
-![Dashboard with HUD, greeting panel and activity heatmap](assets/screenshots/02-dashboard.png)
+### 2. Ana panel
 
-### 3. The learning staircase
+Giriş yapıldıktan sonra kullanıcı ana panele ulaşır:
 
-The core of the product. Chapters are laid out as a two-lane staircase that descends left and right, connected by a dashed path. Each step shows:
+- **HUD çubuğu** — günlük seri, seviye, unvan, sonraki seviyeye kalan XP ve genel tamamlanma yüzdesi.
+- **Operatör karşılama paneli** — günün saatine göre selamlama ve sıradaki bölüme götüren *Kaldığın Yerden Devam Et* butonu.
+- **Aktivite haritası** — son 30 günün çalışma süresi, yoğunluğa göre renklendirilmiş.
+- **Geliştirici paneli özeti** — ilerleme halkalı avatar, tamamlanan bölümler, bugünkü çalışma dakikası ve toplam XP.
 
-- a completion checkbox (+100 XP on first completion),
-- the chapter number and title,
-- a live per-chapter study clock,
-- a **Boss** badge for the chapter's final test,
-- an **Akademi** button that opens the chapter's study room.
+![HUD, karşılama paneli ve aktivite haritası](assets/screenshots/02-dashboard.png)
 
-Completed steps glow gold; the current chapter is marked with a *you are here* tag.
+### 3. Öğrenme merdiveni
 
-![Two-lane zigzag learning staircase](assets/screenshots/03-staircase.png)
+Ürünün kalbi. Bölümler, sağa ve sola inen iki şeritli bir merdiven şeklinde dizilir ve kesik çizgili bir yolla birbirine bağlanır. Her basamakta:
 
-### 4. Developer panel
+- tamamlama kutucuğu (ilk tamamlamada +100 XP),
+- bölüm numarası ve başlığı,
+- bölüme özel canlı çalışma sayacı,
+- bölüm sonu testini gösteren **Boss** rozeti,
+- bölümün çalışma odasını açan **Akademi** butonu bulunur.
 
-The sidebar keeps only the essentials. *Open developer panel* expands a centered modal (slightly smaller than full screen) with everything needed to track progress:
+Tamamlanan basamaklar altın renginde parlar; aktif bölüm *Buradasın* etiketiyle işaretlenir.
 
-- daily focus goal (15 / 30 / 45 / 60 minutes) with a progress ring,
-- streak, level and rank,
-- XP bar to the next level,
-- **You are here** and **Next target** cards with one-click *Start studying*,
-- module progress list, a flippable *Python tip of the day* card and a 7-day activity summary.
+![Sağlı sollu iki şeritli öğrenme merdiveni](assets/screenshots/03-staircase.png)
 
-![Developer panel opened as a centered modal](assets/screenshots/04-dev-panel.png)
+### 4. Geliştirici paneli
 
-### 5. Chapter command center
+Kenar çubuğunda yalnızca temel bilgiler kalır. *Geliştirici panelini aç* butonu, ekranın ortasında tam ekrandan biraz küçük bir pencere açar ve ilerlemeyi takip etmek için gereken her şeyi gösterir:
 
-Opening a chapter shows its command center: a large study timer (start, save, reset) with session / saved / total breakdowns, and four routes into the learning material — lesson notes, code lab, flashcards and the boss fight.
+- ilerleme halkalı günlük odak hedefi (15 / 30 / 45 / 60 dakika),
+- seri, seviye ve unvan,
+- sonraki seviyeye XP çubuğu,
+- tek tıkla *Çalışmaya Başla* butonlu **Şu An Buradasın** ve **Sıradaki Hedef** kartları,
+- modül ilerleme listesi, çevrilebilir *Günün Python İpucu* kartı ve son 7 günün aktivite özeti.
 
-![Chapter command center with study timer](assets/screenshots/05-command-center.png)
+![Ortada açılan geliştirici paneli](assets/screenshots/04-dev-panel.png)
 
-### 6. Lesson notes
+### 5. Görev komuta merkezi
 
-Each chapter ships with a long-form lesson written as a mini-article: concept introduction, problem modelling, step-by-step reading of examples, common pitfalls and real-world usage, with syntax-highlighted code. Learners can also keep personal Markdown notes with a live preview.
+Bir bölüm açıldığında komuta merkezi görünür: kayıtlı / oturum / toplam süre dökümlü büyük bir çalışma sayacı (başlat, kaydet, sıfırla) ve öğrenme içeriğine giden dört yol — ders notları, kod laboratuvarı, bilgi kartları ve boss fight.
 
-![Lesson notes for the Functions chapter](assets/screenshots/06-lesson-notes.png)
+![Çalışma sayaçlı görev komuta merkezi](assets/screenshots/05-command-center.png)
 
-### 7. Live code lab
+### 6. Ders notları
 
-A browser-based Python terminal powered by Pyodide. Code is executed locally in WebAssembly — nothing is sent to a server — and output (including errors) is rendered in the terminal panel.
+Her bölüm, mini makale formatında uzun bir ders içeriğiyle gelir: kavram tanıtımı, problemi modelleme, örnekleri adım adım okuma, sık yapılan hatalar ve gerçek dünya kullanımı; sözdizimi renklendirilmiş kod örnekleriyle. Kullanıcı ayrıca canlı önizlemeli kişisel Markdown notları tutabilir.
 
-![Pyodide code lab running Python in the browser](assets/screenshots/07-code-lab.png)
+![Fonksiyonlar bölümünün ders notları](assets/screenshots/06-lesson-notes.png)
+
+### 7. Canlı kod laboratuvarı
+
+Pyodide ile çalışan, tarayıcı tabanlı bir Python terminali. Kod WebAssembly içinde yerel olarak çalıştırılır — hiçbir şey sunucuya gönderilmez — ve çıktılar (hatalar dahil) terminal panelinde gösterilir.
+
+![Tarayıcıda Python çalıştıran kod laboratuvarı](assets/screenshots/07-code-lab.png)
 
 ### 8. Boss fight
 
-Every chapter ends with a coding challenge against a themed "boss". The learner writes a function, and the platform runs hidden checks against it in Pyodide. Passing the chapter test for the first time marks the chapter complete and awards XP.
+Her bölüm, temaya uygun bir "canavara" karşı bir kodlama göreviyle biter. Kullanıcı bir fonksiyon yazar, platform bu fonksiyonu Pyodide'da gizli testlerle sınar. Bölüm testi ilk kez geçildiğinde bölüm tamamlanmış sayılır ve XP kazanılır.
 
-![Boss fight coding challenge](assets/screenshots/08-boss-fight.png)
+![Boss fight kodlama görevi](assets/screenshots/08-boss-fight.png)
 
-### 9. Mobile layout
+### 9. Mobil görünüm
 
-On small screens the staircase collapses into a single readable column, the HUD stacks vertically and a sticky *next target* bar stays at the bottom of the screen.
+Küçük ekranlarda merdiven tek ve okunaklı bir sütuna dönüşür, HUD dikey olarak dizilir ve ekranın altında sabit bir *Sıradaki hedef* çubuğu kalır.
 
 <p align="center">
-  <img src="assets/screenshots/09-mobile.png" alt="Mobile layout of the learning staircase" width="320">
+  <img src="assets/screenshots/09-mobile.png" alt="Öğrenme merdiveninin mobil görünümü" width="320">
 </p>
 
 ---
 
-## Gamification rules
+## Oyunlaştırma Kuralları
 
-| Action | Reward |
+| Eylem | Ödül |
 | --- | --- |
-| Complete a chapter (first time) | +100 XP |
-| Pass a chapter test (first time) | +100 XP, chapter marked complete |
-| Understand a flashcard | +10 XP |
-| Save study time | +10 XP per minute |
-| Level up | every 500 XP |
+| Bölümü tamamlamak (ilk kez) | +100 XP |
+| Bölüm testini geçmek (ilk kez) | +100 XP, bölüm tamamlandı olarak işaretlenir |
+| Bilgi kartını "Anladım" ile onaylamak | +10 XP |
+| Çalışma süresini kaydetmek | Dakika başına +10 XP |
+| Seviye atlamak | Her 500 XP'de bir |
 
-Developer ranks unlock new avatar effects:
+Geliştirici unvanları yeni avatar efektlerinin kilidini açar:
 
-| XP | Rank |
+| XP | Unvan |
 | --- | --- |
-| 0 | Python Apprentice |
-| 500 | Code Developer |
-| 1,500 | Python Expert |
-| 3,000 | Data Master |
-| 5,000 | Full-Stack Developer |
+| 0 | Python Çırağı |
+| 500 | Kod Geliştiricisi |
+| 1.500 | Python Uzmanı |
+| 3.000 | Veri Ustası |
+| 5.000 | Full-Stack Yazılımcı |
 
 ---
 
-## Tech stack
+## Teknolojiler
 
-| Layer | Technology |
+| Katman | Teknoloji |
 | --- | --- |
-| UI | HTML5, CSS3 (glassmorphism, 3D transforms, CSS grid), vanilla JavaScript (ES2020+) |
-| In-browser Python | Pyodide (WebAssembly CPython) |
-| Persistence | `localStorage` (versioned state object) |
-| Code highlighting | Prism.js |
-| Hosting | GitHub Pages (static, from `docs/`) |
-| Optional backend | Python, FastAPI, SQLite, Uvicorn |
+| Arayüz | HTML5, CSS3 (glassmorphism, 3D dönüşümler, CSS grid), vanilla JavaScript (ES2020+) |
+| Tarayıcıda Python | Pyodide (WebAssembly CPython) |
+| Veri saklama | `localStorage` (sürümlü durum nesnesi) |
+| Kod renklendirme | Prism.js |
+| Yayın | GitHub Pages (statik, `docs/` klasöründen) |
+| İsteğe bağlı backend | Python, FastAPI, SQLite, Uvicorn |
 
 ---
 
-## Architecture
+## Mimari
 
 ```
-┌─────────────────────────── Browser ───────────────────────────┐
-│  index.html + style.css                                        │
-│  script.js ── UI, staircase, timer, XP engine, dev panel        │
-│  academy-content.js ── lessons, flashcards, boss fights         │
-│  storage.js ── localStorage state (topics, stats, activity)     │
-│  Pyodide (WebAssembly) ── executes learner code locally         │
-└────────────────────────────────────────────────────────────────┘
-          ▲ static files                      ▲ optional REST API
+┌──────────────────────────── Tarayıcı ────────────────────────────┐
+│  index.html + style.css                                           │
+│  script.js ── arayüz, merdiven, sayaç, XP motoru, geliştirici paneli │
+│  academy-content.js ── ders notları, bilgi kartları, boss fight'lar │
+│  storage.js ── localStorage durumu (konular, istatistik, aktivite) │
+│  Pyodide (WebAssembly) ── kullanıcı kodunu yerelde çalıştırır      │
+└───────────────────────────────────────────────────────────────────┘
+          ▲ statik dosyalar                  ▲ isteğe bağlı REST API
    GitHub Pages (docs/)              FastAPI + SQLite (backend/)
 ```
 
-- The production build is fully static: GitHub Pages serves `docs/`, and all learner data stays on the device.
-- `frontend/` is the source of truth; `scripts/sync-docs.ps1` mirrors it into `docs/` for deployment.
-- The FastAPI backend mirrors the same data model (topics, XP, streaks, activity) in SQLite for local development.
+- Yayındaki sürüm tamamen statiktir: GitHub Pages `docs/` klasörünü sunar ve tüm kullanıcı verisi cihazda kalır.
+- Asıl kaynak `frontend/` klasörüdür; `scripts/sync-docs.ps1` bunu yayın için `docs/` klasörüne kopyalar.
+- FastAPI backend'i aynı veri modelini (konular, XP, seri, aktivite) yerel geliştirme için SQLite'ta tutar.
 
 ---
 
-## Project structure
+## Proje Yapısı
 
 ```
-frontend/          Source UI (HTML, CSS, JS, lesson content)
-docs/              GitHub Pages build (mirror of frontend/)
-backend/           FastAPI + SQLite API for local development
-scripts/           Helper scripts (sync-docs.ps1)
-assets/screenshots Screenshots used in this README
+frontend/          Kaynak arayüz (HTML, CSS, JS, ders içerikleri)
+docs/              GitHub Pages yayın klasörü (frontend/ kopyası)
+backend/           Yerel geliştirme için FastAPI + SQLite API
+scripts/           Yardımcı betikler (sync-docs.ps1)
+assets/screenshots Bu README'deki ekran görüntüleri
 ```
 
 ---
 
-## Running locally
+## Yerelde Çalıştırma
 
-**Static version (same as production):**
+**Statik sürüm (yayındakiyle aynı):**
 
 ```powershell
 cd docs
 python -m http.server 8000
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+Tarayıcıda [http://127.0.0.1:8000](http://127.0.0.1:8000) adresini açın.
 
-**With the FastAPI backend:**
+**FastAPI backend ile:**
 
 ```powershell
 pip install -r requirements.txt
@@ -188,29 +188,23 @@ cd backend
 python -m uvicorn main:app --reload
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+Tarayıcıda [http://127.0.0.1:8000](http://127.0.0.1:8000) adresini açın.
 
 ---
 
-## Deployment
+## Yayına Alma
 
-1. Edit files in `frontend/`.
-2. Mirror them into `docs/`:
+1. Dosyaları `frontend/` klasöründe düzenleyin.
+2. `docs/` klasörüne kopyalayın:
 
    ```powershell
    .\scripts\sync-docs.ps1
    ```
 
-3. Commit and push to `main`. GitHub Pages publishes `main` → `/docs` automatically.
+3. `main` dalına commit ve push yapın. GitHub Pages, `main` → `/docs` kaynağından otomatik yayınlar.
 
 ---
 
-## Türkçe özet
+## Lisans
 
-**Python Pathfinder**, 32 bölümlük Python müfredatını oyunlaştırılmış bir merdivene dönüştüren, tamamen tarayıcıda çalışan bir öğrenme platformudur. Her bölümde ders notları, Pyodide ile çalışan canlı kod laboratuvarı, bilgi kartları ve bölüm sonu "boss fight" testi bulunur. XP, seviye, unvan, günlük seri, çalışma sayacı ve aktivite haritası `localStorage` üzerinde tutulur; sunucu veya hesap gerekmez.
-
----
-
-## License
-
-Personal educational project by [Furkan Enes Kum](https://github.com/furkaneneskum).
+[Furkan Enes Kum](https://github.com/furkaneneskum) tarafından geliştirilen kişisel eğitim projesi.
