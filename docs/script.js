@@ -1019,7 +1019,7 @@ const KEYBOARD_SHORTCUTS = [
 ];
 
 const BOOT_LINES = [
-  { text: "SYS://PYTHON_AKADEMI v4.0 — Boot sequence başlatıldı", cls: "dim boot" },
+  { text: "SYS://PYTHON_PATHFINDER v4.0 — Boot sequence başlatıldı", cls: "dim boot" },
   { text: "▸ Kernel ..................... [OK]", cls: "dim boot" },
   { text: "▸ localStorage veritabanı .... [OK]", cls: "dim boot" },
   { text: "▸ 32 eğitim modülü ........... [YÜKLENDİ]", cls: "success boot" },

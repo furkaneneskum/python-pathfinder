@@ -22,7 +22,7 @@ from database import (
 
 TOPIC_COLUMNS = "id, title, is_completed, notes, duration, time_spent, resources"
 
-app = FastAPI(title="Python Öğrenme Yol Haritası")
+app = FastAPI(title="Python Pathfinder API")
 
 app.add_middleware(
     CORSMiddleware,
